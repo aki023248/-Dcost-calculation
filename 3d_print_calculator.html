@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="3D コスト計算">
+<title>3D プリンター コスト計算</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;background:#f2f2f7;min-height:100vh;padding-bottom:env(safe-area-inset-bottom)}
+.topbar{background:#1B4332;padding:56px 20px 16px;color:#fff;position:sticky;top:0;z-index:10}
+.topbar h1{font-size:20px;font-weight:600}
+.topbar p{font-size:13px;opacity:0.65;margin-top:3px}
+.content{padding:20px 16px}
+.section-label{font-size:12px;font-weight:600;color:#6e6e73;text-transform:uppercase;letter-spacing:0.06em;margin:0 4px 6px}
+.card{background:#fff;border-radius:12px;overflow:hidden;margin-bottom:20px}
+.row{padding:0 16px;border-bottom:0.5px solid #e5e5ea}
+.row:last-child{border-bottom:none}
+.row label{display:block;font-size:12px;color:#6e6e73;padding-top:10px}
+.row select,.row input[type=number]{width:100%;border:none;outline:none;font-size:17px;font-family:inherit;color:#000;padding:4px 0 10px;background:transparent;appearance:none;-webkit-appearance:none}
+.row select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23C7C7CC' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0 center;padding-right:20px}
+.row input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
+.total-card{background:#1B4332;border-radius:12px;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.total-card .lbl{font-size:15px;color:rgba(255,255,255,0.75)}
+.total-card .val{font-size:32px;font-weight:600;color:#fff}
+.reset-btn{width:100%;padding:14px;background:#fff;border:none;border-radius:12px;font-size:17px;color:#1B4332;font-weight:500;font-family:inherit;cursor:pointer}
+.reset-btn:active{background:#f2f2f7}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>3Dプリンター コスト計算</h1>
+  <p>材料費 + プレート費 + 造形時間費</p>
+</div>
+
+<div class="content">
+
+  <div class="section-label">フィラメント</div>
+  <div class="card">
+    <div class="row">
+      <label>種類</label>
+      <select id="filament" onchange="calc()">
+        <option value="2.04">PLAベーシック</option>
+        <option value="2.04">PLAマット</option>
+        <option value="2.808">PLA半透明</option>
+        <option value="2.808">PLAウッド</option>
+        <option value="2.04">PLAシルク+</option>
+        <option value="2.808">PLAメタル</option>
+        <option value="2.448">PLAグラディエント</option>
+        <option value="2.808">PLAスパークル</option>
+        <option value="4.08">PLAシルクマルチカラー</option>
+        <option value="2.808">PLAギャラクシー</option>
+        <option value="2.808">PLAマーブル</option>
+      </select>
+    </div>
+    <div class="row">
+      <label>使用量（g）</label>
+      <input type="number" id="weight" placeholder="0" min="0" oninput="calc()" inputmode="decimal">
+    </div>
+  </div>
+
+  <div class="section-label">ビルドプレート</div>
+  <div class="card">
+    <div class="row">
+      <label>種類</label>
+      <select id="plate" onchange="calc()">
+        <option value="35">テクスチャ</option>
+        <option value="0">通常</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="section-label">造形時間</div>
+  <div class="card">
+    <div class="row">
+      <label>時間数（時間）</label>
+      <input type="number" id="hours" placeholder="0" min="0" step="0.5" oninput="calc()" inputmode="decimal">
+    </div>
+  </div>
+
+  <div class="total-card">
+    <div class="lbl">合計</div>
+    <div class="val" id="r-total">¥0</div>
+  </div>
+
+  <button class="reset-btn" onclick="reset()">リセット</button>
+
+</div>
+
+<script>
+function fmt(n){return'¥'+Math.round(n).toLocaleString('ja-JP')}
+function calc(){
+  var fp=parseFloat(document.getElementById('filament').value)||0;
+  var w=parseFloat(document.getElementById('weight').value)||0;
+  var pp=parseFloat(document.getElementById('plate').value)||0;
+  var h=parseFloat(document.getElementById('hours').value)||0;
+  document.getElementById('r-total').textContent=fmt(fp*w+pp+h*100);
+}
+function reset(){
+  document.getElementById('weight').value='';
+  document.getElementById('hours').value='';
+  document.getElementById('filament').selectedIndex=0;
+  document.getElementById('plate').selectedIndex=0;
+  calc();
+}
+</script>
+</body>
+</html>
