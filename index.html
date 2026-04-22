@@ -63,8 +63,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;ba
     <div class="row">
       <label>種類</label>
       <select id="plate" onchange="calc()">
-        <option value="35">テクスチャ</option>
-        <option value="0" selected>通常</option>
+        <option value="1">テクスチャ</option>
+        <option value="2" selected>通常</option>
       </select>
     </div>
   </div>
@@ -81,6 +81,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;ba
   </div>
   <button class="reset-btn" onclick="reset()">リセット</button>
 </div>
-<script>(function(){eval(atob('CnZhciBfcD17IjEiOjIuMDQsIjIiOjIuMDQsIjMiOjIuODA4LCI0IjoyLjgwOCwiNSI6Mi4wNCwiNiI6Mi44MDgsIjciOjIuNDQ4LCI4IjoyLjgwOCwiOSI6NC4wOCwiMTAiOjIuODA4LCIxMSI6Mi44MDh9Owp2YXIgX3I9MTAwOwpmdW5jdGlvbiBmbXQobil7cmV0dXJuJ8KlJytNYXRoLnJvdW5kKG4pLnRvTG9jYWxlU3RyaW5nKCdqYS1KUCcpfQpmdW5jdGlvbiBjYWxjKCl7CiAgdmFyIGZpPXBhcnNlSW50KGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdmaWxhbWVudCcpLnZhbHVlKXx8MDsKICB2YXIgdz1wYXJzZUZsb2F0KGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCd3ZWlnaHQnKS52YWx1ZSl8fDA7CiAgdmFyIHBwPXBhcnNlRmxvYXQoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3BsYXRlJykudmFsdWUpfHwwOwogIHZhciBoPXBhcnNlRmxvYXQoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2hvdXJzJykudmFsdWUpfHwwOwogIHZhciBmcD1fcFtmaV18fDA7CiAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3ItdG90YWwnKS50ZXh0Q29udGVudD1mbXQoZnAqdytwcCtoKl9yKTsKfQpmdW5jdGlvbiByZXNldCgpewogIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCd3ZWlnaHQnKS52YWx1ZT0nJzsKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnaG91cnMnKS52YWx1ZT0nJzsKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnZmlsYW1lbnQnKS5zZWxlY3RlZEluZGV4PTA7CiAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3BsYXRlJykuc2VsZWN0ZWRJbmRleD0wOwogIGNhbGMoKTsKfQo='));}());</script>
+<script>(function(){eval(atob('CnZhciBfcD17IjEiOjIuMDQsIjIiOjIuMDQsIjMiOjIuODA4LCI0IjoyLjgwOCwiNSI6Mi4wNCwiNiI6Mi44MDgsIjciOjIuNDQ4LCI4IjoyLjgwOCwiOSI6NC4wOCwiMTAiOjIuODA4LCIxMSI6Mi44MDh9Owp2YXIgX2I9eyIxIjozNSwiMiI6MH07CnZhciBfcj0xMDA7CmZ1bmN0aW9uIGZtdChuKXtyZXR1cm4nwqUnK01hdGgucm91bmQobikudG9Mb2NhbGVTdHJpbmcoJ2phLUpQJyl9CmZ1bmN0aW9uIGNhbGMoKXsKICB2YXIgZmk9cGFyc2VJbnQoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2ZpbGFtZW50JykudmFsdWUpfHwwOwogIHZhciB3PXBhcnNlRmxvYXQoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3dlaWdodCcpLnZhbHVlKXx8MDsKICB2YXIgYmk9cGFyc2VJbnQoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3BsYXRlJykudmFsdWUpfHwwOwogIHZhciBoPXBhcnNlRmxvYXQoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2hvdXJzJykudmFsdWUpfHwwOwogIHZhciBmcD1fcFtmaV18fDA7CiAgdmFyIHBwPV9iW2JpXXx8MDsKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnci10b3RhbCcpLnRleHRDb250ZW50PWZtdChmcCp3K3BwK2gqX3IpOwp9CmZ1bmN0aW9uIHJlc2V0KCl7CiAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3dlaWdodCcpLnZhbHVlPScnOwogIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdob3VycycpLnZhbHVlPScnOwogIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdmaWxhbWVudCcpLnNlbGVjdGVkSW5kZXg9MDsKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncGxhdGUnKS5zZWxlY3RlZEluZGV4PTA7CiAgY2FsYygpOwp9Cg=='));}());</script>
 </body>
 </html>
