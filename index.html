@@ -30,30 +30,27 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;ba
 </style>
 </head>
 <body>
-
 <div class="topbar">
   <h1>3Dプリンター コスト計算</h1>
   <p>材料費 + プレート費 + 造形時間費</p>
 </div>
-
 <div class="content">
-
   <div class="section-label">フィラメント</div>
   <div class="card">
     <div class="row">
       <label>種類</label>
       <select id="filament" onchange="calc()">
-        <option value="2.1">PLAベーシック</option>
-        <option value="2.1">PLAマット</option>
-        <option value="3.0">PLA半透明</option>
-        <option value="3.0">PLAウッド</option>
-        <option value="3.0">PLAシルク+</option>
-        <option value="3.0">PLAメタル</option>
-        <option value="2.6">PLAグラディエント</option>
-        <option value="3.0">PLAスパークル</option>
-        <option value="4.2">PLAシルクマルチカラー</option>
-        <option value="3.0">PLAギャラクシー</option>
-        <option value="3.0">PLAマーブル</option>
+        <option value="1">PLAベーシック</option>
+        <option value="2">PLAマット</option>
+        <option value="3">PLA半透明</option>
+        <option value="4">PLAウッド</option>
+        <option value="5">PLAシルク+</option>
+        <option value="6">PLAメタル</option>
+        <option value="7">PLAグラディエント</option>
+        <option value="8">PLAスパークル</option>
+        <option value="9">PLAシルクマルチカラー</option>
+        <option value="10">PLAギャラクシー</option>
+        <option value="11">PLAマーブル</option>
       </select>
     </div>
     <div class="row">
@@ -61,18 +58,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;ba
       <input type="number" id="weight" placeholder="0" min="0" oninput="calc()" inputmode="decimal">
     </div>
   </div>
-
   <div class="section-label">ビルドプレート</div>
   <div class="card">
     <div class="row">
       <label>種類</label>
       <select id="plate" onchange="calc()">
-        <option value="50">テクスチャ</option>
+        <option value="35">テクスチャ</option>
         <option value="0" selected>通常</option>
       </select>
     </div>
   </div>
-
   <div class="section-label">造形時間</div>
   <div class="card">
     <div class="row">
@@ -80,32 +75,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;ba
       <input type="number" id="hours" placeholder="0" min="0" step="0.5" oninput="calc()" inputmode="decimal">
     </div>
   </div>
-
   <div class="total-card">
     <div class="lbl">合計</div>
     <div class="val" id="r-total">¥0</div>
   </div>
-
   <button class="reset-btn" onclick="reset()">リセット</button>
-
 </div>
-
-<script>
-function fmt(n){return'¥'+Math.round(n).toLocaleString('ja-JP')}
-function calc(){
-  var fp=parseFloat(document.getElementById('filament').value)||0;
-  var w=parseFloat(document.getElementById('weight').value)||0;
-  var pp=parseFloat(document.getElementById('plate').value)||0;
-  var h=parseFloat(document.getElementById('hours').value)||0;
-  document.getElementById('r-total').textContent=fmt(fp*w+pp+h*100);
-}
-function reset(){
-  document.getElementById('weight').value='';
-  document.getElementById('hours').value='';
-  document.getElementById('filament').selectedIndex=0;
-  document.getElementById('plate').selectedIndex=0;
-  calc();
-}
-</script>
+<script>(function(){eval(atob('CnZhciBfcD17IjEiOjIuMDQsIjIiOjIuMDQsIjMiOjIuODA4LCI0IjoyLjgwOCwiNSI6Mi4wNCwiNiI6Mi44MDgsIjciOjIuNDQ4LCI4IjoyLjgwOCwiOSI6NC4wOCwiMTAiOjIuODA4LCIxMSI6Mi44MDh9Owp2YXIgX3I9MTAwOwpmdW5jdGlvbiBmbXQobil7cmV0dXJuJ8KlJytNYXRoLnJvdW5kKG4pLnRvTG9jYWxlU3RyaW5nKCdqYS1KUCcpfQpmdW5jdGlvbiBjYWxjKCl7CiAgdmFyIGZpPXBhcnNlSW50KGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdmaWxhbWVudCcpLnZhbHVlKXx8MDsKICB2YXIgdz1wYXJzZUZsb2F0KGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCd3ZWlnaHQnKS52YWx1ZSl8fDA7CiAgdmFyIHBwPXBhcnNlRmxvYXQoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3BsYXRlJykudmFsdWUpfHwwOwogIHZhciBoPXBhcnNlRmxvYXQoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2hvdXJzJykudmFsdWUpfHwwOwogIHZhciBmcD1fcFtmaV18fDA7CiAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3ItdG90YWwnKS50ZXh0Q29udGVudD1mbXQoZnAqdytwcCtoKl9yKTsKfQpmdW5jdGlvbiByZXNldCgpewogIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCd3ZWlnaHQnKS52YWx1ZT0nJzsKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnaG91cnMnKS52YWx1ZT0nJzsKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnZmlsYW1lbnQnKS5zZWxlY3RlZEluZGV4PTA7CiAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3BsYXRlJykuc2VsZWN0ZWRJbmRleD0wOwogIGNhbGMoKTsKfQo='));}());</script>
 </body>
 </html>
